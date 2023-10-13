@@ -5,8 +5,10 @@ import { Book } from "../types/book";
 type BookContextType = {
   books: Book[];
   userBooks: Book[];
+  filteredBooks: Book[];
   addBook: (book: Book) => void;
   removeBook: (book: Book) => void;
+  filterBooks: (genre: string, maxPages: number) => void;
 };
 
 const BookContext = createContext<BookContextType | null>(null);
@@ -26,6 +28,7 @@ const BookProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [books, setBooks] = useState<Book[]>([]);
   const [userBooks, setUserBooks] = useState<Book[]>([]);
+  const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
 
   useEffect(() => {
     const storageEventListener = (event: StorageEvent) => {
@@ -53,9 +56,11 @@ const BookProvider: React.FC<{ children: React.ReactNode }> = ({
       if (storedBooks) {
         const booksFromLS = JSON.parse(storedBooks);
         setBooks(booksFromLS);
+        setFilteredBooks(booksFromLS);
       } else {
         const newBooks = getBooks();
         setBooks(newBooks);
+        setFilteredBooks(newBooks);
         localStorage.setItem("books", JSON.stringify(newBooks));
       }
 
@@ -91,13 +96,22 @@ const BookProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem("userBooks", JSON.stringify(updatedUserBooks));
   };
 
+  const filterBooks = (genre: string, maxPages: number) => {
+    const filtered = books.filter(
+      (book) => (genre === "" || book.genre === genre) && book.pages <= maxPages
+    );
+    setFilteredBooks(filtered);
+  };
+
   return (
     <BookContext.Provider
       value={{
         books,
         userBooks,
+        filteredBooks,
         addBook,
-        removeBook
+        removeBook,
+        filterBooks,
       }}
     >
       {children}

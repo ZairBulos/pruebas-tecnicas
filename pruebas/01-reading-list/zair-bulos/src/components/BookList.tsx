@@ -1,11 +1,11 @@
 import { useBooks } from "../hooks/useBooks";
 
 function BookList() {
-  const { books } = useBooks();
+  const { filteredBooks } = useBooks();
 
   return (
     <>
-      {books.map(book =>
+      {filteredBooks.map(book =>
         <p key={book.ISBN}>
           {book.title}
         </p>  
