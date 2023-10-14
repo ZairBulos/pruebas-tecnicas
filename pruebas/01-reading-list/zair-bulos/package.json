@@ -1,8 +1,9 @@
 {
-  "name": "zair-bulos",
+  "name": "dev-editorial",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "Bulos <buloszair@gmail.com> (https://github.com/ZairBulos)",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
