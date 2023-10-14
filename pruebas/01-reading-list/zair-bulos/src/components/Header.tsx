@@ -1,12 +1,10 @@
 function Header() {
   return (
-    <header>
-      <nav>
-        <div>
-          <span>Dev Editorial</span>
-        </div>
-      </nav>
-    </header>
+    <nav>
+      <div className="max-w-screen-xl flex items-center justify-center mx-auto p-4">
+        <h1 className="text-2xl font-semibold uppercase">Dev Editorial</h1>
+      </div>
+    </nav>
   );
 }
 

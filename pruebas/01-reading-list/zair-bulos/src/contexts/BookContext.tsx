@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { getBooks } from "../services/books";
+import { toast } from 'react-toastify';
 import { Book } from "../types/book";
 
 type BookContextType = {
@@ -75,14 +76,18 @@ const BookProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const addBook = (book: Book) => {
-    const updatedBooks = books.filter((b) => b !== book);
     const updatedUserBooks = [...userBooks, book];
+    const updatedBooks = books.filter((b) => b !== book);
+    const updatedFilteredBooks = filteredBooks.filter((b) => b !== book);
 
     setBooks(updatedBooks);
     setUserBooks(updatedUserBooks);
+    setFilteredBooks(updatedFilteredBooks);
 
     localStorage.setItem("books", JSON.stringify(updatedBooks));
     localStorage.setItem("userBooks", JSON.stringify(updatedUserBooks));
+
+    toast(`📘 "${book.title}" añadido a "lista de lectura"`);
   };
 
   const removeBook = (book: Book) => {
@@ -90,10 +95,13 @@ const BookProvider: React.FC<{ children: React.ReactNode }> = ({
     const updatedBooks = [...books, book];
 
     setUserBooks(updatedUserBooks);
+    setFilteredBooks(updatedBooks);
     setBooks(updatedBooks);
 
     localStorage.setItem("books", JSON.stringify(updatedBooks));
     localStorage.setItem("userBooks", JSON.stringify(updatedUserBooks));
+
+    toast(`📕 "${book.title}" eliminado de "lista de lectura"`);
   };
 
   const filterBooks = (genre: string, maxPages: number) => {
