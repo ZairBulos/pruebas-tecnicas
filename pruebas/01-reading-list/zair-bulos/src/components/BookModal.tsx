@@ -44,6 +44,7 @@ function BookModal({ book, onClose, addBook, removeBook }: Props) {
           {addBook && (
             <button
               type="button"
+              data-testid="add-book-button"
               onClick={() => addBook(book)}
               className="border border-gray-100 rounded-full p-2 text-sm hover:bg-zinc-600"
             >
@@ -53,6 +54,7 @@ function BookModal({ book, onClose, addBook, removeBook }: Props) {
           {removeBook && (
             <button
               type="button"
+              data-testid="remove-book-button"
               onClick={() => removeBook(book)}
               className="border border-gray-100 rounded-full p-2 text-sm hover:bg-zinc-600"
             >

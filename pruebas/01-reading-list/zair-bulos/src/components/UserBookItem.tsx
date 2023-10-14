@@ -27,8 +27,8 @@ function UserBookItem({ book }: Props) {
         <img
           src={book.cover}
           alt={book.title}
+          draggable={false}
           onClick={toggleModal}
-          loading="lazy"
           className="sm:h-56 md:h-56 lg:h-56 h-48 w-full cursor-pointer"
         />
       </div>

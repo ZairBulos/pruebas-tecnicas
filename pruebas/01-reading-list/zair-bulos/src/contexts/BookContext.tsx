@@ -77,12 +77,11 @@ const BookProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const addBook = (book: Book) => {
     const updatedUserBooks = [...userBooks, book];
-    const updatedBooks = books.filter((b) => b !== book);
-    const updatedFilteredBooks = filteredBooks.filter((b) => b !== book);
+    const updatedBooks = books.filter((b) => b.ISBN !== book.ISBN);
 
     setBooks(updatedBooks);
     setUserBooks(updatedUserBooks);
-    setFilteredBooks(updatedFilteredBooks);
+    setFilteredBooks(updatedBooks);
 
     localStorage.setItem("books", JSON.stringify(updatedBooks));
     localStorage.setItem("userBooks", JSON.stringify(updatedUserBooks));
@@ -91,7 +90,7 @@ const BookProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const removeBook = (book: Book) => {
-    const updatedUserBooks = userBooks.filter((b) => b !== book);
+    const updatedUserBooks = userBooks.filter((b) => b.ISBN !== book.ISBN);
     const updatedBooks = [...books, book];
 
     setUserBooks(updatedUserBooks);

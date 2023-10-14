@@ -5,9 +5,10 @@ import { useBooks } from "../hooks/useBooks";
 
 interface Props {
   book: Book;
+  handleDragStart: (e: React.DragEvent<HTMLDivElement>, book: Book) => void;
 }
 
-function BookItem({ book }: Props) {
+function BookItem({ book, handleDragStart }: Props) {
   const { addBook } = useBooks();
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -17,14 +18,19 @@ function BookItem({ book }: Props) {
 
   return (
     <>
-      <img
-        src={book.cover}
-        alt={book.title}
-        onClick={toggleModal}
-        loading="lazy"
-        className="md:h-56 lg:h-56 h-48 w-full cursor-pointer"
-      />
-
+      <div
+        draggable
+        data-isbn={book.ISBN}
+        onDragStart={(e) => handleDragStart(e, book)}
+      >
+        <img
+          src={book.cover}
+          alt={book.title}
+          draggable={false}
+          onClick={toggleModal}
+          className="md:h-56 lg:h-56 h-48 w-full cursor-pointer"
+        />
+      </div>
       {showModal && (
         <BookModal book={book} onClose={toggleModal} addBook={addBook} />
       )}
