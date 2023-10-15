@@ -58,3 +58,7 @@ Este proyecto utiliza las siguientes tecnologías:
 - [React](https://es.react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+
+## Despliegue
+
+Puedes ver la aplicación en vivo en: [Bazar Online](https://pruebas-tecnicas-eosin.vercel.app/)

@@ -62,3 +62,7 @@ Este proyecto utiliza las siguientes tecnologías:
 - [Node.js](https://nodejs.org)
 - [Express](https://expressjs.com)
 - [TypeScript](https://www.typescriptlang.org/)
+
+## Despliegue
+
+Puedes ver la aplicación en vivo en: [Bazar Online](https://bazar-online-api.onrender.com)
