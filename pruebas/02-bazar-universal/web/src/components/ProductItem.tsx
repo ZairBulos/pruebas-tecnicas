@@ -27,6 +27,11 @@ function ProductItem({ product }: { product: Product }) {
           className="h-60 w-full rounded-lg object-cover"
           src={mainImage}
           alt={product.title}
+          onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            img.src =
+              "/no-image-available.png";
+          }}
         />
       </div>
 
@@ -39,6 +44,11 @@ function ProductItem({ product }: { product: Product }) {
               src={image}
               alt={product.title}
               onClick={() => setMainImage(image)}
+              onError={(e) => {
+                const img = e.target as HTMLImageElement;
+                img.src =
+                  "/no-image-available.png";
+              }}
             />
           </div>
         ))}

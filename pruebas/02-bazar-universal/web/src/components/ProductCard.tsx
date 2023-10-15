@@ -15,20 +15,25 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <Link to={`/items/${product.id}`}>
-      <div className="w-full max-w-sm h-full border rounded-lg shadow bg-zinc-900 border-zinc-700">
+      <div className="w-full max-w-sm border rounded-lg shadow bg-zinc-900 border-zinc-700 flex flex-col h-full hover:opacity-90">
         <img
           src={product.thumbnail}
           alt={product.title}
+          onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            img.src =
+              "/no-image-available.png";
+          }}
           className="p-4 rounded-t-lg h-52 w-full"
         />
-        <div className="px-4 pb-4">
-          <h5 className="text-xl font-semibold tracking-tight text-white mb-2">
+        <div className="px-4 pb-4 flex flex-col h-full">
+          <h5 className="text-xl font-semibold tracking-tight text-white mb-1">
             {product.title}
           </h5>
-          <p className="text-sm text-justify h-16 text-gray-300">
+          <p className="text-sm text-justify text-gray-300 flex-1">
             {product.description}
           </p>
-          <div className="flex items-center mt-2.5 mb-5">
+          <div className="flex items-center py-2">
             {renderStars(roundRating(product.rating))}
             <span className="text-xs font-semibold ml-2 px-2 py-1 rounded bg-blue-200 text-blue-800">
               {product.rating}

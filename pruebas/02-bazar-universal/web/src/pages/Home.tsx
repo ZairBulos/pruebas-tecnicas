@@ -6,7 +6,7 @@ function Home() {
     <main className="flex items-center justify-center h-screen">
       <section className="text-center">
         <Link to="/">
-          <img src="/bazar.png" alt="Bazar Online" className="h-56" />
+          <img src="/logo.png" alt="Bazar Online" className="h-56" />
         </Link>
         <h1 className="text-4xl font-bold leading-loose">Bazar Online</h1>
         <SearchForm showButton />

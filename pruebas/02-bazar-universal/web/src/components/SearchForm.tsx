@@ -15,6 +15,7 @@ function SearchForm({ showButton = false }: Props) {
     e.preventDefault();
 
     if (search.trim() !== "") {
+      setSearch("");
       navigate(`/items?search=${search}`);
     } else {
       setError("Completa el campo");
@@ -30,7 +31,7 @@ function SearchForm({ showButton = false }: Props) {
           value={search}
           placeholder="laptops, smartphones, ..."
           onChange={({ target }) => setSearch(target.value)}
-          className="block p-2 px-4 w-full z-20 text-sm text-gray-900 bg-gray-100 rounded-r-lg focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
+          className="block p-2 px-4 w-full z-20 text-sm text-gray-900 bg-gray-100 rounded-r-lg focus:ring-0 focus:border-transparent placeholder-gray-400"
         />
         <button
           type="submit"
