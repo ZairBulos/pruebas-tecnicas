@@ -1,27 +1,60 @@
-# React + TypeScript + Vite
+# 02 - Desarrollo Full Stack de Bazar (WEB)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Comenzando
 
-Currently, two official plugins are available:
+Antes de comenzar a utilizar el cliente, asegúrese de haber completado la configuración del lado del servidor como se menciona en la [documentación del servidor](/pruebas/02-bazar-universal/api/README.md).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Navega al directorio del proyecto:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+cd pruebas-tecnicas\pruebas\02-bazar-universal\web
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Instalación
+
+Después de clonar el repositorio y navegar al directorio del proyecto, debes instalar las dependencias del proyecto. Puedes elegir entre `npm` o `pnpm` para hacerlo. A continuación se muestran los comandos para ambas opciones:
+
+**Usando npm:**
+
+```bash
+npm install
+```
+
+**Usando pnpm:**
+
+```bash
+pnpm install
+```
+
+### Configuración del entorno
+
+Cree un archivo `.env` en la raíz del directorio del cliente:
+
+```env
+VITE_API_URL=http://localhost:3000/api/items
+```
+
+## Uso
+
+Ahora que ha clonado el repositorio, instalado las dependencias necesarias y configurado el entorno, puede iniciar el cliente:
+
+**Usando npm:**
+
+```bash
+npm start
+```
+
+**Usando pnpm:**
+
+```bash
+pnpm start
+```
+
+## Tecnologías
+
+Este proyecto utiliza las siguientes tecnologías:
+
+- [Vite](https://vitejs.dev/)
+- [React](https://es.react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
